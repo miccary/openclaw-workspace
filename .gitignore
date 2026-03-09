@@ -1,0 +1,5 @@
+﻿.openclaw/
+tmp/
+.clawhub/
+**/credentials/**
+**/auth*.json
