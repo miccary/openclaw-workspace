@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "sessions": [
+    {
+      "trackingId": "OC-20260312-001",
+      "date": "2026-03-12",
+      "project": "mystrategy/amazon-data-warehouse",
+      "summary": "完成1~7步：结构搭建、SQL完善、DDL+ETL、口径文档、调度分区、数据质量、最终检查；并读取两份Excel字段字典用于映射。",
+      "commits": [
+        "a3596f9",
+        "022216e",
+        "5c32b17",
+        "92bbd8f",
+        "d4e3fe6",
+        "7442376"
+      ],
+      "memoryFile": "memory/2026-03-12.md",
+      "status": "active"
+    }
+  ]
+}

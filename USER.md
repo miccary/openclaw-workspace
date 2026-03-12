@@ -15,3 +15,5 @@ _(What do they care about? What projects are they working on? What annoys them? 
 ---
 
 The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+
+- 会话偏好：每次会话结束自动生成追踪编号和归档摘要，并写入可检索记忆。
