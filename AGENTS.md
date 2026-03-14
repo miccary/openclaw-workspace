@@ -207,6 +207,14 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## Self-Improving Agent (Enabled)
+
+- Use WAL rule: when user给出“纠正/偏好/决定/具体值”，先写入 `SESSION-STATE.md`，再回复。
+- Context >60% 时，开启 `memory/working-buffer.md` 逐条记录（用户消息+助手摘要）。
+- 发生截断/续聊时，先读 `memory/working-buffer.md` 和 `SESSION-STATE.md` 再继续。
+- 每周至少一次做 Memory compaction：把 `memory/YYYY-MM-DD.md` 里高价值内容沉淀到 `MEMORY.md`。
+- 说“已完成”前，必须做一次可验证检查（VBR：Verify Before Report）。
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
