@@ -10,8 +10,8 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 Before doing anything else:
 
-1. Read `SOUL.md` — this is who you are
-2. Read `USER.md` — this is who you're helping
+1. Read `SOUL.md` - this is who you are
+2. Read `USER.md` - this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 
@@ -21,8 +21,8 @@ Don't ask permission. Just do it.
 
 You wake up fresh each session. These files are your continuity:
 
-- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
-- **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) - raw logs of what happened
+- **Long-term:** `MEMORY.md` - your curated memories, like a human's long-term memory
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 
@@ -30,15 +30,15 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 
 - **ONLY load in main session** (direct chats with your human)
 - **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
-- This is for **security** — contains personal context that shouldn't leak to strangers
+- This is for **security** - contains personal context that shouldn't leak to strangers
 - You can **read, edit, and update** MEMORY.md freely in main sessions
 - Write significant events, thoughts, decisions, opinions, lessons learned
-- This is your curated memory — the distilled essence, not raw logs
+- This is your curated memory - the distilled essence, not raw logs
 - Over time, review your daily files and update MEMORY.md with what's worth keeping
 
 ### 📝 Write It Down - No "Mental Notes"!
 
-- **Memory is limited** — if you want to remember something, WRITE IT TO A FILE
+- **Memory is limited** - if you want to remember something, WRITE IT TO A FILE
 - "Mental notes" don't survive session restarts. Files do.
 - When someone says "remember this" → update `memory/YYYY-MM-DD.md` or relevant file
 - When you learn a lesson → update AGENTS.md, TOOLS.md, or the relevant skill
@@ -51,6 +51,54 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - Don't run destructive commands without asking.
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
+
+## Reliability Updates
+
+### OpenClaw update rename lock (2026-03-17)
+- Before running `openclaw update --yes` or `npm install -g openclaw`, stop the gateway and any shells/editors that might still hold `C:\Users\Thinkpad\AppData\Roaming\npm\node_modules\openclaw`.
+- If npm continues to report `EBUSY`, double-check that no process is locking the directory and retry the install only after the path becomes writable.
+
+## Project Initialization Best Practices
+
+### GitHub Project Setup
+1. **Always check for GitHub CLI first**: Run `gh --version` to see if available
+2. **If no CLI**: Provide clear manual instructions for repository creation
+3. **Structure before code**: Create complete directory structure first
+4. **Documentation first**: Write core docs (README, architecture, SOP) before implementation
+5. **Git workflow**: Initialize local repo early, commit in logical chunks
+
+### Memory System Activation
+1. **Daily memory file**: Create `memory/YYYY-MM-DD.md` at session start if not exists
+2. **MEMORY.md maintenance**: Update with significant learnings during heartbeats
+3. **Working buffer**: Activate when context > 60% or during complex multi-step tasks
+4. **Session state**: Keep SESSION-STATE.md updated with current objectives and decisions
+
+### User Preference Tracking
+- Record user's GitHub username when provided
+- Note project-specific preferences and requirements
+- Track completion status and next steps
+- Maintain session continuity through memory files
+
+### GitHub Deployment Best Practices
+1. **Token Authentication**:
+   - Classic tokens (ghp_*) work with most API endpoints
+   - Fine-grained tokens (github_pat_*) may have restricted permissions
+   - Always test token with simple API call first
+
+2. **Repository Creation Fallback**:
+   - If API creation fails, provide manual creation instructions
+   - Create automation scripts for post-creation steps
+   - Include verification steps in scripts
+
+3. **Push Automation**:
+   - Create platform-specific scripts (PowerShell, batch, bash)
+   - Include error handling and user guidance
+   - Provide clear success/failure messages
+
+4. **Verification**:
+   - Check if repository exists before attempting push
+   - Verify user has correct permissions
+   - Confirm successful push with status check
 
 ## External vs Internal
 
@@ -68,7 +116,7 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 
 ## Group Chats
 
-You have access to your human's stuff. That doesn't mean you _share_ their stuff. In groups, you're a participant — not their voice, not their proxy. Think before you speak.
+You have access to your human's stuff. That doesn't mean you _share_ their stuff. In groups, you're a participant - not their voice, not their proxy. Think before you speak.
 
 ### 💬 Know When to Speak!
 
@@ -109,7 +157,7 @@ On platforms that support reactions (Discord, Slack), use emoji reactions natura
 - It's a simple yes/no or approval situation (✅, 👀)
 
 **Why it matters:**
-Reactions are lightweight social signals. Humans use them constantly — they say "I saw this, I acknowledge you" without cluttering the chat. You should too.
+Reactions are lightweight social signals. Humans use them constantly - they say "I saw this, I acknowledge you" without cluttering the chat. You should too.
 
 **Don't overdo it:** One reaction per message max. Pick the one that fits best.
 
@@ -123,7 +171,7 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 
 - **Discord/WhatsApp:** No markdown tables! Use bullet lists instead
 - **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
-- **WhatsApp:** No headers — use **bold** or CAPS for emphasis
+- **WhatsApp:** No headers - use **bold** or CAPS for emphasis
 
 ## 💓 Heartbeats - Be Proactive!
 
@@ -207,13 +255,95 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## GitHub Deployment Best Practices
+
+### Token Authentication
+- **Fine-grained tokens (github_pat_*)** may not work with all API endpoints
+- **Classic tokens** are more reliable for repository creation
+- **API failures**: If GitHub API returns 401/404, fall back to manual creation
+
+### Repository Creation
+1. **Manual creation first**: Always recommend user creates repository via https://github.com/new
+2. **Remote initialization**: GitHub may add README/LICENSE even if not selected
+3. **Conflict resolution**: Use `git push --force` when local version is authoritative
+4. **Verification**: Always check `git remote -v` and `git log --oneline --all`
+
+### Automation Scripts
+- Create both PowerShell (.ps1) and batch (.bat) scripts for Windows users
+- Include detailed error messages and troubleshooting steps
+- Add verification steps to confirm successful push
+
+## Telegram Notification Guidelines
+
+### Target Configuration
+- **Username vs Chat ID**: Usernames (@username) may not resolve; prefer numeric chat IDs
+- **Configuration check**: Verify Telegram target before attempting to send
+- **Fallback options**: If Telegram fails, provide alternative notification methods
+
+### Message Delivery
+- **Error handling**: Catch and report specific errors (e.g., "chat not found")
+- **User confirmation**: When notification fails, ask for target details or confirm receipt in current channel
+- **Message format**: Keep notifications concise with emoji and clear status indicators
+
+### Prevention Rule (2026-03-15)
+- **Before sending Telegram notifications**: Always verify the target configuration is valid and accessible
+- **When user requests Telegram notification**: Ask for specific target (username or chat ID) if not already configured
+- **If notification fails**: Report the specific error and ask for confirmation in the current channel as fallback
+- **Best practice**: Test notification delivery with a small test message before sending important updates
+
+## Notion Database Management
+
+### Action Items Tracking
+- **Status field is critical**: Action Items without Status fields cannot be tracked for progress
+- **Always check Status**: When reviewing Notion databases, verify Status fields are populated
+- **Overdue identification**: Check Due dates against current date to identify overdue items
+- **Blocked items**: Look for Status = "阻塞" (blocked) or similar blocking indicators
+- **Priority assignment**: Ensure Priority fields are set for time-sensitive items
+- **Owner assignment**: Items without Owners may lack accountability
+
+### Database Health Checks
+1. **Status coverage**: Ensure >90% of items have Status set
+2. **Overdue review**: Flag items past due date for immediate attention
+3. **Blocked items**: Identify and escalate blocked items requiring intervention
+4. **Priority distribution**: Check that high-priority items have appropriate Status
+5. **Owner assignment**: Verify critical items have assigned Owners
+
+### Prevention Rule
+- **When working with Notion Action Items**: Always check Status field coverage first. If <50% of items have Status set, report this as a critical tracking issue before proceeding with other analysis.
+- **When using multiple agents**: Always check available agent configurations first. For role-based agents (architect, analyst, etc.), use `sessions_spawn(agentId="xxx")` with clear task descriptions. Document which agent handled which task for accountability.
+- **Agent Configuration Limitation (2026-03-15)**: If `agents_list` only shows pm agent (not the configured 6 agents), use role simulation approach: include `【角色：[角色名]】` in task description and use standardized labels. This workaround effectively simulates multi-agent collaboration while maintaining task tracking.
+- **PM Role Evolution (2026-03-15)**: As PM transitions to macro-analysis role, ensure clear boundaries: focus on planning, coordination, analysis, and reporting, not hands-on execution. Use automation (Cron tasks) and agent delegation for operational work.
+- **OpenClaw Configuration Validation (2026-03-15)**: After OpenClaw restart for configuration changes, always verify the change actually took effect by checking `agents_list` output. If `allowAny: false` persists, the configuration may not be valid or may require different syntax.
+- **OAuth token refresh failures**: When an agent run reports “Failed to refresh OAuth token for openai-codex” (or similar), stop further runs, re-authenticate (`openclaw login` / credential refresh), and confirm tokens before resuming to avoid repeated authentication-induced failures.
+
 ## Self-Improving Agent (Enabled)
 
-- Use WAL rule: when user给出“纠正/偏好/决定/具体值”，先写入 `SESSION-STATE.md`，再回复。
+- Use WAL rule: when user给出"纠正/偏好/决定/具体值"，先写入 `SESSION-STATE.md`，再回复。
 - Context >60% 时，开启 `memory/working-buffer.md` 逐条记录（用户消息+助手摘要）。
 - 发生截断/续聊时，先读 `memory/working-buffer.md` 和 `SESSION-STATE.md` 再继续。
 - 每周至少一次做 Memory compaction：把 `memory/YYYY-MM-DD.md` 里高价值内容沉淀到 `MEMORY.md`。
-- 说“已完成”前，必须做一次可验证检查（VBR：Verify Before Report）。
+- 说"已完成"前，必须做一次可验证检查（VBR：Verify Before Report）。
+
+## 长时间任务监控规则 (2026-03-16)
+
+### Cron任务超时预防
+- **超时阈值设置**: 复杂任务设置合理超时时间（10-30分钟）
+- **任务简化原则**: 对于可能超时的任务，先实现简化版，再逐步增加复杂度
+- **监控机制**: 定期检查Cron任务执行状态，特别是连续失败的任务
+- **超时处理**: 任务超时后应记录错误原因，并调整配置重新测试
+- **恢复流程**: 若 Cron 任务（如 news-briefing）因超时或脚本编码问题失败，暂停原计划，先运行简化的 3 分钟验证任务、检查脚本语法/编码、记录结果，确认 `news-briefing-monitor.ps1` 输出绿色后再重新启用。
+
+### 新闻简报任务特定规则
+- **搜索数量控制**: 每个领域限制搜索1-2条新闻，避免web_search耗时过长
+- **价值评估简化**: 先实现基础价值评级，再逐步增加详细分析
+- **URL验证优先**: 确保每个新闻包含完整URL，便于后期验证
+- **渐进式优化**: 先确保任务能完成，再优化输出质量和详细程度
+
+### 任务健康检查
+- **执行状态监控**: 定期检查Cron任务的lastRunStatus和consecutiveErrors
+- **错误分析**: 对失败任务进行错误原因分析，调整配置或简化逻辑
+- **性能优化**: 对于耗时任务，考虑拆分或优化处理逻辑
+- **用户反馈**: 根据用户反馈调整任务输出格式和内容详细程度
 
 ## Make It Yours
 
